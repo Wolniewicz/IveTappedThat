@@ -33,6 +33,14 @@ class Greeting(ndb.Model):
     content = ndb.StringProperty(indexed=False)
     date = ndb.DateTimeProperty(auto_now_add=True)
 
+class Beer(ndb.Model):
+    """Models a basic beer for the beer list, name, abv, brewery"""
+    name = ndb.StringProperty()
+    abv = ndb.StringProperty()
+    brewery = ndb.StringProperty()
+    date = ndb.DateTimeProperty(auto_now_add=True)
+    author = ndb.UserProperty()
+
 
 class MainPage(webapp2.RequestHandler):
 
@@ -43,6 +51,10 @@ class MainPage(webapp2.RequestHandler):
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
         greetings = greetings_query.fetch(10)
 
+        beers_query = Beer.query(
+            ancestor=guestbook_key(guestbook_name)).order(-Beer.date)
+        beers = beers_query.fetch(10)
+
         if users.get_current_user():
             url = users.create_logout_url(self.request.uri)
             url_linktext = 'Logout'
@@ -52,6 +64,7 @@ class MainPage(webapp2.RequestHandler):
 
         template_values = {
             'greetings': greetings,
+            'beers': beers,
             'guestbook_name': urllib.quote_plus(guestbook_name),
             'url': url,
             'url_linktext': url_linktext,
@@ -82,7 +95,31 @@ class Guestbook(webapp2.RequestHandler):
         self.redirect('/?' + urllib.urlencode(query_params))
 
 
+class AddBeer(webapp2.RequestHandler):
+
+    def post(self):
+        # We set the same parent key on the 'Greeting' to ensure each Greeting
+        # is in the same entity group. Queries across the single entity group
+        # will be consistent. However, the write rate to a single entity group
+        # should be limited to ~1/second.
+        guestbook_name = self.request.get('guestbook_name',
+                                          DEFAULT_GUESTBOOK_NAME)
+        beer = Beer(parent=guestbook_key(guestbook_name))
+
+        if users.get_current_user():
+            beer.author = users.get_current_user()
+
+        beer.brewery = self.request.get('beerBrewery')
+        beer.name = self.request.get('beerName')
+        beer.abv = self.request.get('beerABV')
+        beer.put()
+
+        query_params = {'guestbook_name': guestbook_name}
+        self.redirect('/?' + urllib.urlencode(query_params))        
+
+
 application = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/sign', Guestbook),
+    ('/addBeer', AddBeer)
 ], debug=True)

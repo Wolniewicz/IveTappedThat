@@ -28,6 +28,27 @@
 
     <a href="{{ url|safe }}">{{ url_linktext }}</a>
 
+
+
+    <hr>
+    <h4> Growing Beer Data Base, Add to here if you have some not listed</h4>
+    <form action="/addBeer?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="beerBrewery" rows="1" cols="20">Brewery</textarea></div>
+      <div><textarea name="beerName" rows="1" cols="20">Beer Name</textarea></div>
+      <div><textarea name="beerABV" rows="1" cols="20">Beer ABV</textarea></div>
+      <div><input type="submit" value="Add Beer"></div>
+    </form>
+
+    <hr>
+    <table border="1">
+      {% for beer in beers %}
+        <tr>
+          <td>{{beer.brewery}}</td>
+          <td>{{ beer.name }}</td> 
+          <td>{{beer.abv}}</td>
+        </tr>
+      {% endfor %}
+    </table>
   </body>
 </html>
 {% endautoescape %}
