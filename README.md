@@ -1,18 +1,11 @@
 IveTappedThat
 =============
 
-Personal project using .NET framework. 
+Personal project using google app engine. 
 
-Learning experience, fun.
+Learning experience, + fun.
 
 
+Served to: ivetappedthat.com
 
-Tutorials:
 
-Setting up: http://www.windowsazure.com/en-us/develop/net/tutorials/get-started/
-
-More setting up: http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started
-
-Adding Controller: http://www.asp.net/mvc/tutorials/mvc-5/introduction/adding-a-controller
-
-Adding View: http://www.asp.net/mvc/tutorials/mvc-5/introduction/adding-a-view
