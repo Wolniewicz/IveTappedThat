@@ -111,8 +111,9 @@ class AddBeer(webapp2.RequestHandler):
 
         beer.brewery = self.request.get('beerBrewery')
         beer.name = self.request.get('beerName')
-        beer.abv = self.request.get('beerABV')
-        beer.put()
+        beer.abv = self.request.get('beerABV').replace("%", "");
+        if users.get_current_user():
+            beer.put()    
 
         query_params = {'guestbook_name': guestbook_name}
         self.redirect('/?' + urllib.urlencode(query_params))        
