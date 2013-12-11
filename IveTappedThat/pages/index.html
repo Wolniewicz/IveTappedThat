@@ -5,37 +5,22 @@
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    {% for greeting in greetings %}
-      {% if greeting.author %}
-        <b>{{ greeting.author.nickname() }}</b> wrote:
-      {% else %}
-       An anonymous person wrote:
-      {% endif %}
-      <blockquote>{{ greeting.content }}</blockquote>
-    {% endfor %}
-
-    <form action="/sign?guestbook_name={{ guestbook_name }}" method="post">
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-      <div><input type="submit" value="Sign Guestbook"></div>
-    </form>
-
-    <hr>
-    <!--
-    <form>Guestbook name:
-      <input value="{{ guestbook_name }}" name="guestbook_name">
-      <input type="submit" value="switch">
-    </form>
-    -->
     <a href="{{ url|safe }}">{{ url_linktext }}</a>
+    </br>
+    <hr>    
 
 
+  <form action="/tappedlist">
+    <input type="submit" value="Tapped List">
+  </form>
 
     <hr>
+
     <h4> Growing Beer Data Base, Add to here if you have some not listed</h4>
     <h4> You need to be logged in to add to the DB</h4>
 
     <h4 name="alert"></h4>
-    <form action="/addBeer?guestbook_name={{ guestbook_name }}" method="post">
+    <form action="/addBeer?beerlist_name={{ beerlist_name }}" method="post">
       <div>Brewery:<textarea name="beerBrewery" rows="1" cols="20"></textarea></div>
       <div>Beer Name:<textarea name="beerName" rows="1" cols="20"></textarea></div>
       <div>Beer ABV:<textarea name="beerABV" rows="1" cols="20"></textarea></div>
