@@ -9,13 +9,13 @@ handlers:
   static_dir: stylesheets
 
 - url: /
-  script: guestbook.application
+  script: mainPage.application
 
 - url: /tappedlist
-  script: tappedlist.application
+  script: tappedList.application
 
 - url: /.*
-  script: guestbook.application
+  script: mainPage.application
 
 libraries:
 - name: webapp2
