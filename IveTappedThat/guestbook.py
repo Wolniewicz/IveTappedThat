@@ -52,7 +52,7 @@ class MainPage(webapp2.RequestHandler):
         greetings = greetings_query.fetch(10)
 
         beers_query = Beer.query(
-            ancestor=guestbook_key(guestbook_name)).order(-Beer.date)
+            ancestor=guestbook_key(guestbook_name)).order(-Beer.brewery)
         beers = beers_query.fetch(10)
 
         if users.get_current_user():

@@ -13,6 +13,12 @@ indexes:
 - kind: Beer
   ancestor: yes
   properties:
+  - name: brewery
+    direction: desc
+
+- kind: Beer
+  ancestor: yes
+  properties:
   - name: date
     direction: desc
 
