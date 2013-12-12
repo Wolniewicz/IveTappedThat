@@ -43,7 +43,7 @@ class MainPage(webapp2.RequestHandler):
 
         beers_query = Beer.query(
             ancestor=beerlist_key(beerlist_name)).order(-Beer.brewery)
-        beers = beers_query.fetch(10)
+        beers = beers_query.fetch(100)
 
         if users.get_current_user():
             url = users.create_logout_url(self.request.uri)

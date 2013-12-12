@@ -28,6 +28,12 @@ indexes:
   - name: date
     direction: desc
 
+- kind: UserTappedList
+  ancestor: yes
+  properties:
+  - name: date
+    direction: desc
+
 - kind: beer
   ancestor: yes
   properties:

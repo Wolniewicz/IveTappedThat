@@ -16,7 +16,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 
 BEER_LIST_NAME = "beer_list"
-
+NICKNAME =  users.get_current_user().nickname()
 
 # We set a parent key on the 'Greetings' to ensure that they are all in the same
 # entity group. Queries across the single entity group will be consistent.
@@ -26,6 +26,10 @@ def beerlist_key(beerlist_name=BEER_LIST_NAME):
     """Constructs a Datastore key for a beerlist entity with beerlist_name."""
     return ndb.Key('BeerList', beerlist_name)
 
+def userTappedList_key(userTappedList_name=NICKNAME):
+    """Constructs a Datastore key for a tapped list entity with user name."""
+    return ndb.Key('userTappedList', userTappedList_name)
+
 class Beer(ndb.Model):
     """Models a basic beer for the beer list, name, abv, brewery"""
     name = ndb.StringProperty()
@@ -34,17 +38,25 @@ class Beer(ndb.Model):
     date = ndb.DateTimeProperty(auto_now_add=True)
     author = ndb.UserProperty()
 
-
+class UserTappedList(ndb.Model):
+    """Models a basic tapped list for a user"""
+    beer = Beer
+    date = ndb.DateTimeProperty(auto_now_add=True)
 
 class TappedList(webapp2.RequestHandler):
 
     def get(self):
 
         beerlist_name = self.request.get('beerlist_name', BEER_LIST_NAME)
+        userTappedList_name = self.request.get('userTappedList_name',NICKNAME)
 
         beers_query = Beer.query(
             ancestor=beerlist_key(beerlist_name)).order(-Beer.brewery)
         beers = beers_query.fetch(10)
+
+        tappedList_query = UserTappedList.query(
+            ancestor=userTappedList_key(userTappedList_name)).order(-UserTappedList.date)
+        personaltapped = tappedList_query.fetch(10)
 
         if users.get_current_user():
             url = users.create_logout_url(self.request.uri)
@@ -56,6 +68,8 @@ class TappedList(webapp2.RequestHandler):
         template_values = {
             'beers': beers,
             'beerlist_name': urllib.quote_plus(beerlist_name),
+            'personaltapped': personaltapped,
+            'userTappedList_name': urllib.quote_plus(userTappedList_name),
             'url': url,
             'url_linktext': url_linktext,
         }
@@ -63,8 +77,11 @@ class TappedList(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('pages/tappedlist.html')
         self.response.write(template.render(template_values))
 
+#class AddToList(webapp2.RequestHandler):
 
+ #   def post(self):
 
 application = webapp2.WSGIApplication([
     ('/tappedlist', TappedList)
+    #('/tappedlist/addtolist', AddToList)
 ], debug=True)
