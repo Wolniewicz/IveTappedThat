@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+ <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+    </br>
+    <hr>    
+
+  <form action="/">
+    <input type="submit" value="Home">
+  </form>
+  <form action="/tappedlist">
+    <input type="submit" value="Tapped List">
+  </form>
+
+    <hr>
+
+    <h4> Growing Beer Data Base, Add to here if you have some not listed</h4>
+    <h4> You need to be logged in to add to the DB</h4>
+
+    <h4 name="alert"></h4>
+    <form action="/addBeer?beerlist_name={{ beerlist_name }}" method="post">
+      <div>Brewery:<textarea name="beerBrewery" rows="1" cols="20"></textarea></div>
+      <div>Beer Name:<textarea name="beerName" rows="1" cols="20"></textarea></div>
+      <div>Beer ABV:<textarea name="beerABV" rows="1" cols="20"></textarea></div>
+      <div><input type="submit" value="Add Beer"></div>
+    </form>
+
+    <hr>
+    <table border="1">
+      <tr>
+          <td>Brewery</td>
+          <td>Name</td> 
+          <td>ABV(%)</td>
+      </tr>
+      {% for beer in beers %}
+        <tr>
+          <td> {{beer.brewery}} </td>
+          <td> {{ beer.name }} </td> 
+          <td> {{beer.abv}} </td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
+{% endautoescape %}
