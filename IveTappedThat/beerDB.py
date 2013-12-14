@@ -35,7 +35,7 @@ class Beer(ndb.Model):
     author = ndb.UserProperty()
 
 
-class MainPage(webapp2.RequestHandler):
+class BeerDB(webapp2.RequestHandler):
 
     def get(self):
 
@@ -59,10 +59,10 @@ class MainPage(webapp2.RequestHandler):
             'url_linktext': url_linktext,
         }
 
-        template = JINJA_ENVIRONMENT.get_template('pages/index.html')
+        template = JINJA_ENVIRONMENT.get_template('pages/beerDB.html')
         self.response.write(template.render(template_values))
 
-"""
+
 class AddBeer(webapp2.RequestHandler):
 
     def post(self):
@@ -87,10 +87,10 @@ class AddBeer(webapp2.RequestHandler):
             beer.put()    
 
         query_params = {'beerlist_name': beerlist_name}
-        self.redirect('/?' + urllib.urlencode(query_params))    
-"""
+        self.redirect('/beerdb?' + urllib.urlencode(query_params))    
+
 
 application = webapp2.WSGIApplication([
-    ('/', MainPage),
-   # ('/addBeer', AddBeer)
+    ('/beerdb', BeerDB),
+    ('/beerdb/addBeer', AddBeer)
 ], debug=True)
