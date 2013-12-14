@@ -85,10 +85,10 @@ class AddBeer(webapp2.RequestHandler):
 
         if users.get_current_user():
             beer.put()    
+    
 
         query_params = {'beerlist_name': beerlist_name}
-        self.redirect('/beerdb?' + urllib.urlencode(query_params))    
-
+        self.redirect('/beerdb?' + urllib.urlencode(query_params))
 
 application = webapp2.WSGIApplication([
     ('/beerdb', BeerDB),

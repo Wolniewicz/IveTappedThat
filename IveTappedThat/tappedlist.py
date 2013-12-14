@@ -16,7 +16,10 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 
 BEER_LIST_NAME = "beer_list"
-NICKNAME =  users.get_current_user().nickname()
+if users.get_current_user():
+    NICKNAME =  users.get_current_user().nickname()
+else:
+    NICKNAME = "none"
 
 # We set a parent key on the 'Greetings' to ensure that they are all in the same
 # entity group. Queries across the single entity group will be consistent.
