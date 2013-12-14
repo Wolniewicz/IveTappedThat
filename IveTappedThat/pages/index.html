@@ -9,7 +9,6 @@
     </br>
     <hr>    
 
-
   <form action="/beerdb">
       <input type="submit" value="Beer DB">
     </form>
@@ -17,34 +16,16 @@
     <input type="submit" value="Tapped List">
   </form>
 
-    <hr>
+  <hr>
 
-    <h4> Growing Beer Data Base, Add to here if you have some not listed</h4>
-    <h4> You need to be logged in to add to the DB</h4>
-
-    <h4 name="alert"></h4>
-    <form action="/addBeer?beerlist_name={{ beerlist_name }}" method="post">
-      <div>Brewery:<textarea name="beerBrewery" rows="1" cols="20"></textarea></div>
-      <div>Beer Name:<textarea name="beerName" rows="1" cols="20"></textarea></div>
-      <div>Beer ABV:<textarea name="beerABV" rows="1" cols="20"></textarea></div>
-      <div><input type="submit" value="Add Beer"></div>
-    </form>
-
-    <hr>
-    <table border="1">
-      <tr>
-          <td>Brewery</td>
-          <td>Name</td> 
-          <td>ABV(%)</td>
-      </tr>
-      {% for beer in beers %}
-        <tr>
-          <td> {{beer.brewery}} </td>
-          <td> {{ beer.name }} </td> 
-          <td> {{beer.abv}} </td>
-        </tr>
-      {% endfor %}
-    </table>
+  <h3> Welcome to I've tapped that!</h3>
+  <p>
+    I've tapped that is a webpage that is currently in developement and will let users keep track of what beer they have tried before, as well as give recomendations based upon what you have had.
+  </p>
+  <p>
+    Please come back and check us out later! We plan to be in basic operation (with a good look) in mid to late January!
+  </p>
+    
   </body>
 </html>
 {% endautoescape %}
