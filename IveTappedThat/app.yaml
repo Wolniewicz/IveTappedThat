@@ -12,7 +12,7 @@ handlers:
   script: mainPage.application
 
 - url: /tappedlist
-  script: tappedList.application
+  script: tappedlist.application
 
 - url: /beerdb
   script: beerDB.application
