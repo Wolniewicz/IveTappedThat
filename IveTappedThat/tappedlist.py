@@ -90,20 +90,19 @@ class AddToList(webapp2.RequestHandler):
         
         userTappedList_name = self.request.get('userTappedList_name',
                                           NICKNAME)
+
+        tappedlist = UserTappedList(parent = userTappedList_key(userTappedList_name))
+
+
+        #if users.get_current_user():
+        #    tappedlist.author = users.get_current_user()
         """
-        beer = Beer(parent=beerlist_key(beerlist_name))
-
-        if users.get_current_user():
-            beer.author = users.get_current_user()
-
-        beer.brewery = self.request.get('beerBrewery')
-        beer.name = self.request.get('beerName')
-        beer.abv = self.request.get('beerABV').replace("%", "");
+        figure out how to make the tapped list data get filled.
 
 
 
         if users.get_current_user():
-            beer.put()    
+            tappedlist.put()    
     
         """
         query_params = {'userTappedList_name': userTappedList_name}
