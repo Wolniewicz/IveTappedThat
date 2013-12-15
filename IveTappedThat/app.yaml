@@ -16,7 +16,8 @@ handlers:
 
 - url: /beerdb
   script: beerDB.application
-- url: /beerdb/addBeer
+
+- url: /beerdb/.*
   script: beerDB.application
 
 - url: /.*
