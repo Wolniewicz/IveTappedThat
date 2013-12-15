@@ -59,8 +59,10 @@ class TappedList(webapp2.RequestHandler):
 
         tappedList_query = UserTappedList.query(
             ancestor=userTappedList_key(userTappedList_name)).order(-UserTappedList.date)
-        personaltapped = tappedList_query.fetch(10)
-
+        if: tappedList_query.fetch(10)
+            personaltapped = tappedList_query.fetch(10)
+        else:
+            personaltapped = "none"
         if users.get_current_user():
             url = users.create_logout_url(self.request.uri)
             url_linktext = 'Logout'
