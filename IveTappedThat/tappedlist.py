@@ -81,11 +81,35 @@ class TappedList(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('pages/tappedlist.html')
         self.response.write(template.render(template_values))
 
-#class AddToList(webapp2.RequestHandler):
 
- #   def post(self):
+class AddToList(webapp2.RequestHandler):
+
+    def post(self):
+
+
+        
+        userTappedList_name = self.request.get('userTappedList_name',
+                                          NICKNAME)
+        """
+        beer = Beer(parent=beerlist_key(beerlist_name))
+
+        if users.get_current_user():
+            beer.author = users.get_current_user()
+
+        beer.brewery = self.request.get('beerBrewery')
+        beer.name = self.request.get('beerName')
+        beer.abv = self.request.get('beerABV').replace("%", "");
+
+
+
+        if users.get_current_user():
+            beer.put()    
+    
+        """
+        query_params = {'userTappedList_name': userTappedList_name}
+        self.redirect('/tappedlist?' + urllib.urlencode(query_params))
 
 application = webapp2.WSGIApplication([
-    ('/tappedlist', TappedList)
-    #('/tappedlist/addtolist', AddToList)
+    ('/tappedlist', TappedList),
+    ('/tappedlist/addtolist', AddToList)
 ], debug=True)
