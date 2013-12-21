@@ -53,6 +53,7 @@ class TappedList(webapp2.RequestHandler):
         beerlist_name = self.request.get('beerlist_name', BEER_LIST_NAME)
         userTappedList_name = self.request.get('userTappedList_name',NICKNAME)
 
+        # Get 10 beers to display
         beers_query = Beer.query(
             ancestor=beerlist_key(beerlist_name)).order(-Beer.brewery)
         beers = beers_query.fetch(10)
@@ -62,6 +63,7 @@ class TappedList(webapp2.RequestHandler):
         
         personaltapped = tappedList_query.fetch(10)
 
+        # Display login/logout based on login status
         if users.get_current_user():
             url = users.create_logout_url(self.request.uri)
             url_linktext = 'Logout'
@@ -69,6 +71,7 @@ class TappedList(webapp2.RequestHandler):
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
 
+        # Loaded values into html
         template_values = {
             'beers': beers,
             'beerlist_name': urllib.quote_plus(beerlist_name),

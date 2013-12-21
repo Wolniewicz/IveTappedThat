@@ -52,6 +52,7 @@ class MainPage(webapp2.RequestHandler):
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
 
+        # Values loaded into html
         template_values = {
             'beers': beers,
             'beerlist_name': urllib.quote_plus(beerlist_name),

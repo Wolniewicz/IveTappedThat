@@ -14,7 +14,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 
-
+# Name of beer list
 BEER_LIST_NAME = "beer_list"
 
 
@@ -52,6 +52,7 @@ class BeerDB(webapp2.RequestHandler):
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
 
+        # Loaded values into html
         template_values = {
             'beers': beers,
             'beerlist_name': urllib.quote_plus(beerlist_name),
