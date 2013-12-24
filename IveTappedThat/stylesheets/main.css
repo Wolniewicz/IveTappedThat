@@ -4,16 +4,25 @@ body {
   color:white;
 }
 #navigation {
-  width: 700px ;
-  margin-left: auto ;
-  margin-right: auto ;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.link{
+.login {
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em;
+}
+.link {
 	float:left;
 }
-.mainMessage{
-
+.mainMessage {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.secondaryMessage{
-	
+.secondaryMessage {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
