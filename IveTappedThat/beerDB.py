@@ -41,6 +41,7 @@ class BeerDB(webapp2.RequestHandler):
 
         beerlist_name = self.request.get('beerlist_name', BEER_LIST_NAME)
 
+        # fetch first 100 beers for display
         beers_query = Beer.query(
             ancestor=beerlist_key(beerlist_name)).order(-Beer.brewery)
         beers = beers_query.fetch(100)

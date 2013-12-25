@@ -58,6 +58,7 @@ class TappedList(webapp2.RequestHandler):
             ancestor=beerlist_key(beerlist_name)).order(-Beer.brewery)
         beers = beers_query.fetch(10)
 
+        # Display their first 10 tapped beers
         tappedList_query = UserTappedList.query(
             ancestor=userTappedList_key(userTappedList_name)).order(-UserTappedList.date)
         
