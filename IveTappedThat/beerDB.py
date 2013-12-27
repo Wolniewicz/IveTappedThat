@@ -31,7 +31,7 @@ class Beer(ndb.Model):
     name = ndb.StringProperty()
     abv = ndb.StringProperty()
     brewery = ndb.StringProperty()
-    ibu = ndb.StringProperty();
+    ibu = ndb.StringProperty()
     date = ndb.DateTimeProperty(auto_now_add=True)
     author = ndb.UserProperty()
 
@@ -83,6 +83,7 @@ class AddBeer(webapp2.RequestHandler):
         beer.brewery = self.request.get('beerBrewery')
         beer.name = self.request.get('beerName')
         beer.abv = self.request.get('beerABV').replace("%", "");
+        beer.ibu = self.request.get('beerIBU');
 
 
 
