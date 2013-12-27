@@ -31,6 +31,7 @@ class Beer(ndb.Model):
     name = ndb.StringProperty()
     abv = ndb.StringProperty()
     brewery = ndb.StringProperty()
+    ibu = ndb.StringProperty();
     date = ndb.DateTimeProperty(auto_now_add=True)
     author = ndb.UserProperty()
 
