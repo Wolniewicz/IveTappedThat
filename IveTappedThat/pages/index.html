@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
- <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-  </head>
-  <body>
+<head>
+  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+  <div class="textArea">
     <div class="login">
       <a href="{{ url|safe }}">{{ url_linktext }} with
         <img src="/images/googleplusicon.jpg" width="50" height="50"/>
       </a>
     </div>
-    </br>
-    <hr>    
+  </br>
+  <hr>    
 
-    <div id="navigation">
-      <form class="link" action="/beerdb">
-        <input type="submit" value="Beer DB">
-      </form>
-      <form class="link" action="/tappedlist">
-        <input type="submit" value="Tapped List">
-      </form>
-    </div>
-    <br>
+  <div id="navigation">
+    <form class="link" action="/beerdb">
+      <input type="submit" value="Beer DB">
+    </form>
+    <form class="link" action="/tappedlist">
+      <input type="submit" value="Tapped List">
+    </form>
+  </div>
+  <br>
   <hr>
 
   <div class="mainMessage">
@@ -43,8 +44,9 @@
     <li>Get recommendations on what beer to try next</li>
     <li>Keep track of how much you have had in one night -- safety first</li>
     <li>Extensive beer database that only gets bigger as more beer is made!</li>
-  </div?
-    
-  </body>
+  </div>
+</div>
+
+</body>
 </html>
 {% endautoescape %}

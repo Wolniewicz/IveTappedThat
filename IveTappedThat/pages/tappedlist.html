@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 {% autoescape true %}
 <html>
- <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-  </head>
-  <body>
+<head>
+  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+  <div class="textArea">
     <div class="login">
       <a href="{{ url|safe }}">{{ url_linktext }} with
         <img src="/images/googleplusicon.jpg" width="50" height="50"/>
@@ -38,16 +39,16 @@
     <h4>Beer DB</h4>  
     <table border="1">
       <tr>
-          <td>Brewery</td>
-          <td>Name</td> 
-          <td>ABV(%)</td>
+        <td>Brewery</td>
+        <td>Name</td> 
+        <td>ABV(%)</td>
       </tr>
       {% for beer in beers %}
-        <tr>
-          <td> {{beer.brewery}} </td>
-          <td> {{beer.name}} </td> 
-          <td> {{beer.abv}} </td>
-        </tr>
+      <tr>
+        <td> {{beer.brewery}} </td>
+        <td> {{beer.name}} </td> 
+        <td> {{beer.abv}} </td>
+      </tr>
       {% endfor %}
     </table>
     <hr>
@@ -55,19 +56,19 @@
 
     <table border="1">
       <tr>
-          <td>Brewery</td>
-          <td>Name</td> 
-          <td>ABV(%)</td>
+        <td>Brewery</td>
+        <td>Name</td> 
+        <td>ABV(%)</td>
       </tr>
       {% for tapped in personaltapped %}
-        <tr>
-          <td> {{tapped.beer.brewery}} </td>
-          <td> {{tapped.beer.name}} </td> 
-          <td> {{tapped.beer.abv}} </td>
-        </tr>
+      <tr>
+        <td> {{tapped.beer.brewery}} </td>
+        <td> {{tapped.beer.name}} </td> 
+        <td> {{tapped.beer.abv}} </td>
+      </tr>
       {% endfor %}
     </table>
-
-  </body>
+  </div>
+</body>
 </html>
 {% endautoescape %}
