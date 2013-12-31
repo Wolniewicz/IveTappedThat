@@ -5,9 +5,12 @@ body {
   color:white;
 }
 #navigation {
-  width: 700px;
+  width: 160px;
+  height:25px;
   margin-left: auto;
   margin-right: auto;
+  border-style:solid;
+  border-color: white;
 }
 .login {
   margin-left: auto;

@@ -11,64 +11,61 @@
         <img src="/images/googleplusicon.jpg" width="50" height="50"/>
       </a>
     </div>
-
-    <hr>    
-    <div id="navigation">
-      <form class="link" action="/">
-        <input type="submit" value="Home">
-      </form>
-      <form class="link" action="/beerdb">
-        <input type="submit" value="Beer DB">
-      </form>
-    </div>
-    <br>
-    <hr>  
-
-
-
-    <h4> This page will let you select what beers you have drank, and start building your tapped list!</h4>
-
-    <form action="/tappedlist/addtolist?userTappedList_name={{ userTappedList_name }}" method="post">
-      <div>Brewery:<textarea name="beerBrewery" rows="1" cols="20"></textarea></div>
-      <div>Beer Name:<textarea name="beerName" rows="1" cols="20"></textarea></div>
-      <div>Beer ABV:<textarea name="beerABV" rows="1" cols="20"></textarea></div>
-      <div><input type="submit" value="Add Beer"></div>
+    
+  </br>  
+  <div id="navigation">
+    <form class="link" action="/">
+      <input type="submit" value="Home">
     </form>
-
-    <hr>
-    <h4>Beer DB</h4>  
-    <table border="1">
-      <tr>
-        <td>Brewery</td>
-        <td>Name</td> 
-        <td>ABV(%)</td>
-      </tr>
-      {% for beer in beers %}
-      <tr>
-        <td> {{beer.brewery}} </td>
-        <td> {{beer.name}} </td> 
-        <td> {{beer.abv}} </td>
-      </tr>
-      {% endfor %}
-    </table>
-    <hr>
-    <h4>Your taps!</h4>
-
-    <table border="1">
-      <tr>
-        <td>Brewery</td>
-        <td>Name</td> 
-        <td>ABV(%)</td>
-      </tr>
-      {% for tapped in personaltapped %}
-      <tr>
-        <td> {{tapped.beer.brewery}} </td>
-        <td> {{tapped.beer.name}} </td> 
-        <td> {{tapped.beer.abv}} </td>
-      </tr>
-      {% endfor %}
-    </table>
+    <form class="link" action="/beerdb">
+      <input type="submit" value="Beer DB">
+    </form>
   </div>
+  <br>
+
+  <h4> This page will let you select what beers you have drank, and start building your tapped list!</h4>
+
+  <form action="/tappedlist/addtolist?userTappedList_name={{ userTappedList_name }}" method="post">
+    <div>Brewery:<textarea name="beerBrewery" rows="1" cols="20"></textarea></div>
+    <div>Beer Name:<textarea name="beerName" rows="1" cols="20"></textarea></div>
+    <div>Beer ABV:<textarea name="beerABV" rows="1" cols="20"></textarea></div>
+    <div><input type="submit" value="Add Beer"></div>
+  </form>
+
+  <hr>
+  <h4>Beer DB</h4>  
+  <table border="1">
+    <tr>
+      <td>Brewery</td>
+      <td>Name</td> 
+      <td>ABV(%)</td>
+    </tr>
+    {% for beer in beers %}
+    <tr>
+      <td> {{beer.brewery}} </td>
+      <td> {{beer.name}} </td> 
+      <td> {{beer.abv}} </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <hr>
+  <h4>Your taps!</h4>
+
+  <table border="1">
+    <tr>
+      <td>Brewery</td>
+      <td>Name</td> 
+      <td>ABV(%)</td>
+    </tr>
+    {% for tapped in personaltapped %}
+    <tr>
+      <td> {{tapped.beer.brewery}} </td>
+      <td> {{tapped.beer.name}} </td> 
+      <td> {{tapped.beer.abv}} </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
 </body>
 </html>
 {% endautoescape %}
