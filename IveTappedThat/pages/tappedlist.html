@@ -3,6 +3,7 @@
 <html>
 <head>
   <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.css" />
 </head>
 <body>
   <div class="textArea">
@@ -23,6 +24,11 @@
   </div>
   <br>
 
+  <div class="col-sm-2 col-md-2 col-lg-2 left">
+  </div>
+
+
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 content">
   <h4> This page will let you select what beers you have drank, and start building your tapped list!</h4>
 
   <form action="/tappedlist/addtolist?userTappedList_name={{ userTappedList_name }}" method="post">
@@ -65,6 +71,12 @@
     </tr>
     {% endfor %}
   </table>
+  
+  </div>
+
+
+  <div class="col-sm-2 col-md-2 col-lg-2 right">
+  </div>
 </div>
 </body>
 </html>

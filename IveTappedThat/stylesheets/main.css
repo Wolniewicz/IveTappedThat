@@ -25,9 +25,15 @@ body {
   width: 700px;
   margin-left: auto;
   margin-right: auto;
+
+  color:white;
 }
 .secondaryMessage {
   width: 700px;
   margin-left: auto;
   margin-right: auto;
+  color:white;
+}
+.content {
+  color:white;
 }
